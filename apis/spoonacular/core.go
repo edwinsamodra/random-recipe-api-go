@@ -15,7 +15,7 @@ func GetRandomRecipes() (Recipe, error) {
 	if err != nil {
 		return Recipe{}, err
 	}
-	req.Header.Add("x-api-key", "addYourAPIKEY")
+	req.Header.Add("x-api-key", "62788b380a32463f9ab406589b11d445")
 
 	res, err := client.Do(req)
 	if err != nil {
