@@ -9,14 +9,6 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-type Claims struct {
-	Username string `json:"username"`
-	Role     string `json:"role"`
-	jwt.StandardClaims
-}
-
-var jwtKey = []byte("secret-key")
-
 // func Auth() gin.HandlerFunc {
 // 	const API_KEY = "BaksoBeranak"
 // 	const HEADER_KEY = "api-key-secret"
@@ -44,10 +36,10 @@ func Auth() gin.HandlerFunc {
 
 		token := strings.Split(authorization, " ")
 
-		claims := &Claims{}
+		claims := &util.Claims{}
 
 		tkn, err := jwt.ParseWithClaims(token[1], claims, func(token *jwt.Token) (interface{}, error) {
-			return jwtKey, nil
+			return util.JwtKey, nil
 		})
 		if err != nil {
 			if err == jwt.ErrSignatureInvalid {
